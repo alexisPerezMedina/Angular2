@@ -1,1 +1,38 @@
-<p>tiempo works!</p>
+<div class="container">
+    <br>
+    <h4>Consulta de tiempo por cuidad</h4>
+        <!-- Fila para los dos paneles de consulta -->
+        <div class="row">
+            <!-- Columna 1: Formulario de consulta -->
+            <div class="col-lg-6 mb-4">
+                <div class="card p-3">
+                    <form [formGroup]="formulario" (ngSubmit)="consultar()">
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">Ciudad</label>
+                            <input type="text" class="form-control" id="ciudad" 
+                            aria-describedby="ciudadHelp" formControlName="ciudad">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigoCiudad" class="form-label">Código Ciudad</label>
+                            <input type="text" class="form-control" id="codigoCiudad" formControlName="codigo">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Consultar</button>
+                    </form>
+                </div>
+            </div>
+    
+            <!-- Columna 2: Resultados de la consulta -->
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><strong>Temperatura:</strong> --</li>
+                            <li><strong>Ciudad:</strong> --</li>
+                            <li><strong>Latitud:</strong> --</li>
+                            <li><strong>Longitud:</strong> --</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

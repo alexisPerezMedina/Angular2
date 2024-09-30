@@ -1,6 +1,7 @@
 <div class="container">
     <br>
     <h4>Consulta de tiempo por cuidad</h4>
+    <h5>{{ fecha | date: 'dd/MM/yyyy' }}</h5>
         <!-- Fila para los dos paneles de consulta -->
         <div class="row">
             <!-- Columna 1: Formulario de consulta -->
@@ -11,12 +12,15 @@
                             <label for="ciudad" class="form-label">Ciudad</label>
                             <input type="text" class="form-control" id="ciudad" 
                             aria-describedby="ciudadHelp" formControlName="ciudad">
+                            <p class="text-danger" *ngIf="formulario.get('ciudad')?.invalid && formulario.get('ciudad')?.touched">Por favor, escriba sólo letras y no ciudad de Barcelona</p>
                         </div>
                         <div class="mb-3">
                             <label for="codigoCiudad" class="form-label">Código Ciudad</label>
                             <input type="text" class="form-control" id="codigoCiudad" formControlName="codigo">
+                            <p class="text-danger" *ngIf="formulario.get('codigo')?.invalid && formulario.get('codigo')?.touched">Por favor, escriba sólo letras</p>
                         </div>
                         <button type="submit" class="btn btn-primary">Consultar</button>
+                        <p class="text-danger" ngif="showError">{{mensajeError}}</p>
                     </form>
                 </div>
             </div>
@@ -26,10 +30,12 @@
                 <div class="card">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li><strong>Temperatura:</strong> --</li>
-                            <li><strong>Ciudad:</strong> --</li>
-                            <li><strong>Latitud:</strong> --</li>
-                            <li><strong>Longitud:</strong> --</li>
+                            <li><strong>Descripcion: {{ descripcion }}</strong></li>
+                            <li><strong>Temperatura: {{ temperatura }}</strong></li>
+                            <li><strong>Humedad: {{ humedad }}</strong></li>
+                            <li><strong>Ciudad:  {{ name | uppercase}}</strong></li>
+                            <li><strong>Latitud: {{ latitud }}</strong></li>
+                            <li><strong>Longitud: {{ longitud }}</strong></li>
                         </ul>
                     </div>
                 </div>
